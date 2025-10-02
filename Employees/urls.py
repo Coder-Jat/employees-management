@@ -23,11 +23,13 @@ from Employees_detail.views import get_details
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_details),
+    
     path('employees/', include('Employees_detail.urls')),
     
-    
+    path('', views.employee_list, name='employee_list'),
+    path('edit/<int:employee_id>/', views.edit_employee, name='edit_employee'),
     path("__reload__", include("django_browser_reload.urls")),
+
 
 
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
